@@ -14,11 +14,10 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 * #### The role of gender and ethnicity differences in diabetes health ouctomes.
 
 ### Dimensions: 
-* Date (Date -> Year)
 * Location (LocationID, LocationDesc, LocationAbbr, GeoLocation)
 * Patient (StratificationCategory1, Stratification1, StratificationCategoryID1, StratificationID1)
 * Diagnosis (Topic, DataSource, Question)
 * Disease_Rates (DataValueUnit, DataValueType, DataValue, DataValueAlt)
 
 ### Facts:
-* Disease_RatesID(PK), Disease_Rates(FK), Date(FK), PatientID(FK), DiagnosisID(FK), LocationID(FK)
+* Disease_RatesID(PK), Disease_Rates(FK), Date(FK), PatientID(FK), DiagnosisID(FK), LocationID(FK), Date (Date -> Year)
