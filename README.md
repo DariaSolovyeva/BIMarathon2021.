@@ -15,7 +15,7 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 
 ### Dimensions: 
 * Location (LocationID, LocationDesc, LocationAbbr, GeoLocation)
-* Response ( it is empty, do we need this???)
+* Response ( ResponseID - it is empty, should I create Primary key myself or delete this column? )
 * Gender_Race (StratificationCategoryID1, StratificationID1, StratificationCategory1, Stratification1)
 * Topic (TopicID, Topic, DataSource)  DataSource we need to put in Responce, right?
 * Question (QuestionID, Question)
