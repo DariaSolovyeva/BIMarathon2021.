@@ -17,7 +17,7 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 * Location (LocationID, LocationDesc, LocationAbbr, GeoLocation)
 * Response ( it is empty, do we need this???)
 * Gender_Race (StratificationCategoryID1, StratificationID1, StratificationCategory1, Stratification1)
-* Topic (TopicID, Topic, DataSource)
+* Topic (TopicID, Topic, DataSource)  DataSource we need to put in Responce, right?
 * Question (QuestionID, Question)
 
 ### Facts:
