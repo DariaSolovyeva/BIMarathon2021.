@@ -15,7 +15,7 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 
 ### Dimensions: 
 * Location (LocationID, LocationDesc, LocationAbbr, GeoLocation)
-* Patient (StratificationCategory1, Stratification1, StratificationCategoryID1, StratificationID1)
+* Gender_Race (StratificationCategory1, Stratification1, StratificationCategoryID1, StratificationID1)
 * Diagnosis (Topic, DataSource, Question)
 * Disease_Rates (DataValueUnit, DataValueType, DataValue, DataValueAlt)
 
