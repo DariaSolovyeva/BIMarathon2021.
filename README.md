@@ -38,3 +38,4 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 - Question_FK
 - Date
 
+PK_Topic_ID - type varchar(10) not int typy, is it ok?
