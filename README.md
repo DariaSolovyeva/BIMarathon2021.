@@ -21,21 +21,17 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 * Question (QuestionID, Question)
 
 ### Facts:
-#### DateValue 
-- DataValueTypeID
-- DataValue
-- DataValueAlt
+#### Fact_Disease
+- Fact_ID
+- YearStart
+- YearEnd
 - DataValueUnit 
-- DataValueType             (also not entirely clear data)
-- DataValueFootnoteSymbol   ( these signs are indicated: &, **,-    Do we need this column or better delete?)
-- DatavalueFootnote         (Can it be better to put these data into a separate table?)
-- LowConfidenceLimit        (I don't understand this colum)
-- HighConfidenceLimit       (I don't understand this colum)
-- Location_FK
-- Response_FK
-- Gender_Race_FK
-- Topic_FK
-- Question_FK
-- Date
-
-PK_Topic_ID - type varchar(10) not int typy, is it ok?
+- DataValue            
+- LowConfidenceLimit       
+- HighConfidenceLimit      
+- FK_TopicID
+- FK_ResponseID
+- FK_StratificationCategoryID1
+- FK_locationID
+- FK_QuestionID
+- FK_DataValueTypeID
