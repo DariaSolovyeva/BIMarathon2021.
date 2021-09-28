@@ -14,11 +14,12 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 * #### The role of gender and ethnicity differences in diabetes health ouctomes.
 
 ### Dimensions: 
-* Location (LocationID, LocationDesc, LocationAbbr, GeoLocation)
-* Response ( ResponseID - it is empty, should I create Primary key myself or delete this column? )
-* Gender_Race (StratificationCategoryID1, StratificationID1, StratificationCategory1, Stratification1)
-* Topic (TopicID, Topic, DataSource)  DataSource we need to put in Responce, right?
-* Question (QuestionID, Question)
+* Response_DIM (ResponseID,Response)
+* Location_DIM (LocationID, LocationDesc, GeoLocation)
+* StratificationCategory_DIM (StratificationCategoryID1, StratificationCategory1, Stratification1)
+* Topic_DIM (TopicID, Topic, DataSource)  
+* Question_DIM (QuestionID, Question)
+* DataValueType_DIM (DataValueType_ID, DataValueType, DatavalueFootnote)
 
 ### Facts:
 #### Fact_Disease
