@@ -26,7 +26,8 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 - YearStart
 - YearEnd
 - DataValueUnit 
-- DataValue            
+- DataValue 
+- DataValueAlt           
 - LowConfidenceLimit       
 - HighConfidenceLimit      
 - FK_TopicID
