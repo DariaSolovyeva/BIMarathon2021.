@@ -14,7 +14,6 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 * #### The role of gender and ethnicity differences in diabetes health ouctomes.
 
 ### Dimensions: 
-* Response_DIM (ResponseID,Response)
 * Location_DIM (LocationID, LocationDesc, GeoLocation)
 * StratificationCategory_DIM (StratificationCategoryID1, StratificationCategory1, Stratification1)
 * Topic_DIM (TopicID, Topic, DataSource)  
@@ -31,7 +30,6 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 - LowConfidenceLimit       
 - HighConfidenceLimit      
 - FK_TopicID
-- FK_ResponseID
 - FK_StratificationCategoryID1
 - FK_locationID
 - FK_QuestionID
