@@ -4,14 +4,13 @@ The Chronic Disease Indicators system is an electronic repository of current and
 CDI increased to 124 indicators in the following 18 topic groups: alcohol; arthritis; asthma; cancer; cardiovascular disease; chronic kidney disease; chronic obstructive pulmonary disease; diabetes; immunization; nutrition, physical activity, and weight status; oral health; tobacco; overarching conditions; and new topic areas that include disability, mental health, older adults, reproductive health, and school health.
 
 My goal for this project is to conduct Data Cleaning and Exploratory Data Analysis for the Chronic Disease Indicators (CDI). 
-Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725 
 
 ## Sources and Code Used
 #### Data Source: https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725 
 
 
 ### Goal:
-* #### Display the top 10 US chronic diseases on a bar plot (count of top 10 topics U.S Chronic Deseases);
+* #### Created a regression model for  Display the top 10 US chronic diseases on a bar plot (count of top 10 topics U.S Chronic Deseases);
 * #### To evaluate the increase in chances of Chronic Kidney Disease;
 * #### The role of gender and ethnicity differences in diabetes health ouctomes.
 
