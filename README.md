@@ -40,4 +40,4 @@ Data set is found here:https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-
 
 ## Logical Model
 
-[Physical Data Model_  Chronic Disease Indicators .pdf](https://github.com/DariaSolovyeva/BIMarathon2021./files/7342008/Physical.Data.Model_.Chronic.Disease.Indicators.pdf)
+![Physical Data Model_  Chronic Disease Indicators ](https://user-images.githubusercontent.com/36121575/137229844-30a5bf41-6b69-44a5-b4b4-cf39a2e23f3b.jpeg)
