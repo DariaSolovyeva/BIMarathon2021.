@@ -7,3 +7,4 @@ from fact_table
 ) 
 select * from CTE
 where Duplicates >1;
+![GitHub Logo](/desktop/githubusercontent/1.png)
