@@ -91,7 +91,9 @@ select*,
 greatest(0.20, LowConfidenceLimit) as LowConfidenceLimit
 from fact_table;
 
--- Using Common Table Expression to find 
+/* Using Common Table Expression to find plot to comparison of Diabetes among women aged 18-44 years for 
+different states having sun (DataValue) <5000 */
+
 with CTE_1 as (
 select Topic from dim_topic
 where Topic = 'Diabetes'
