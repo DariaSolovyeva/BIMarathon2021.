@@ -8,4 +8,3 @@ from fact_table
 select * from CTE
 where Duplicates >1;
 
-/Users/daria/Desktop/githubusercontent/1.png
