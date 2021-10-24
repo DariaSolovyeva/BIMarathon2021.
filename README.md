@@ -9,7 +9,7 @@ Topic: 13k+ rows of data are grouped into the following 17 categories. There is 
 
 Question: Within each topic, there are a number of questions. There is a corresponding column QuestionID that we’ll use. These are the 202 unique indicators that the dataset has values, and we’ll analyze this further.
 
-DataSource: Given that we’ve so many indicators, I’m not surprised that there are 33 data sources. However, the following histogram shows that the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and NVSS, which is the National Vital Statistics System.
+DataSource: Given that we’ve so many indicators, I’m not surprised that there are 24 data sources. However, the following histogram shows that the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and NVSS, which is the National Vital Statistics System.
 
 
 
