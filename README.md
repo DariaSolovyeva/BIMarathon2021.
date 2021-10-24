@@ -12,6 +12,9 @@ Let’s understand what each column is about. While some of the column names are
 
 * DataSource: Given that we’ve so many indicators, I’m not surprised that there are 24 data sources. However, the following histogram shows that the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and YRBSS, which is the Youth Risk Behavior Surveillance System (YRBSS) monitors six categories of health-related behaviors that contribute to the leading causes of death and disability among youth and adults.
 
+* DataValueUnit: Values in DataValue consist of the following units, including percentages, dollar-amounts, years, and cases per thousands.
+
+
 The Chronic Disease Indicators system is an electronic repository of current and historical data and provides data on over 200 indicators. Using the system will result in enhanced chronic disease surveillance, better-informed policymaking, and facilitation of chronic disease program evaluation by state/territory and large health departments.
 CDI increased to 124 indicators in the following 18 topic groups: alcohol; arthritis; asthma; cancer; cardiovascular disease; chronic kidney disease; chronic obstructive pulmonary disease; diabetes; immunization; nutrition, physical activity, and weight status; oral health; tobacco; overarching conditions; and new topic areas that include disability, mental health, older adults, reproductive health, and school health.
 
