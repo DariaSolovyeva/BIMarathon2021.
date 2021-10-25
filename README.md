@@ -1,6 +1,8 @@
 # Chronic Disease Indicators (CDI) Project
 
 Recently, I’ve taken on a personal project to apply the SQL and data analyses I’ve been studying. Since I’ve an interest in population health, I decided to start by focusing on understanding a 4 year population health specific dataset I found on Kaggle. This dataset was from the US Center for Disease Control and Prevention on chronic disease indicators. In this blog series, I want to demonstrate what is in the dataset with exploration. According the the overview on Kaggle, the limited contextual information provided in this dataset notes that the indicators are collected on the state level from 2001 to 2020, and there are 124 indicators.
+### Timeframe
+2008 - 2014
 
 I imported the CSV data file into  MySQL workbench. Then I used various approaches to better understand the data within each column since there was very limited contextual information. The group of stratification 2 and 3 columns were not useful and these were removed. 
 
