@@ -4,6 +4,9 @@ Recently, I’ve taken on a personal project to apply the SQL and data analyses 
 ### Timeframe
 2017 - 2020
 
+##  Question 1: What are the most common indicators of chronic disease in Pennsylvania?
+## What states have the highest percentage of chronic disease caused by Alchohol?
+
 I imported the CSV data file into  MySQL workbench. Then I used various approaches to better understand the data within each column since there was very limited contextual information. The group of stratification 2 and 3 columns were not useful and these were removed. 
 
 Let’s understand what each column is about. While some of the column names are relatively self-explanatory, I used ...... to better understand the unique categorical data. Here are some examples:
