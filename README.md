@@ -63,4 +63,6 @@ The objective is to create an abstract that investigates the most common chronic
 
 ## Logical Model
 
+## Conclusions and Relevance:
+
 ![Physical Data Model_  Chronic Disease Indicators ](https://user-images.githubusercontent.com/36121575/137229844-30a5bf41-6b69-44a5-b4b4-cf39a2e23f3b.jpeg)
