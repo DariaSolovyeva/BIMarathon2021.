@@ -78,6 +78,8 @@ CDI increased to 124 indicators in the following 18 topic groups: alcohol; arthr
 <img width="583" alt="Screen Shot 2021-11-04 at 8 37 39 PM" src="https://user-images.githubusercontent.com/36121575/140454448-c654f265-afcb-4fc3-a9a4-73dd3f7fdccf.png">
 
 ## Conclusions and Relevance:
+https://10ay.online.tableau.com/#/site/datamarafon/workbooks/934018?:origin=card_share_link
+
 ### Created a model for  Display the top 10 US chronic diseases on a horizontal bars (count of top 10 topics U.S Chronic Deseases);
 I looked at the distribution of chronic conditions by gender to identify relevant trendsand patterns . Chronic conditions differ by gender. Women tend to have significantlyhigher cases per 100,000 of hospitalizations for asthma. Whereas men tend to have a higher mortalityrate from cancer, diabetes, chronic kidney, and other conditions.diabetes, and kidney disease. 
 
