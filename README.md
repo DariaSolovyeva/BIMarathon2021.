@@ -79,3 +79,6 @@ CDI increased to 124 indicators in the following 18 topic groups: alcohol; arthr
 ## Conclusions and Relevance:
 ### Created a model for  Display the top 10 US chronic diseases on a horizontal bars (count of top 10 topics U.S Chronic Deseases);
 I looked at the distribution of chronic conditions by gender to identify relevant trendsand patterns . Chronic conditions differ by gender. Women tend to have significantlyhigher cases per 100,000 of hospitalizations for asthma. Whereas men tend to have a higher mortalityrate from cancer, diabetes, chronic kidney, and other conditions.diabetes, and kidney disease. 
+
+###  Premature Mortality Trends Across Race Stratification
+The data shows that premature mortality is slightly increasing year over year with incremental increases. Premature mortality of adults aged 45–64 years of age impact the “Black, non-Hispanic” and the “American Indian or Alaska Native” populations most severely. On the other spectrum, we see “Asian or Pacific Islander” and “Hispanic” populations to be least severe. By comparison, we’re seeing the premature mortality numbers for “Black, non-Hispanic” population to be more than double of the “Hispanic” population.
