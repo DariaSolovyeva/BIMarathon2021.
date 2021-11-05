@@ -2,7 +2,8 @@
 
 Recently, I’ve taken on a personal project to apply the SQL and data analyses I’ve been studying. Since I’ve an interest in population health, I decided to start by focusing on understanding a 4 year population health specific dataset I found on Kaggle. This dataset was from the US Center for Disease Control and Prevention on chronic disease indicators. In this blog series, I want to demonstrate what is in the dataset with exploration. According the the overview on Kaggle, the limited contextual information provided in this dataset notes that the indicators are collected on the state level from 2001 to 2020, and there are 124 indicators.
 
-### Data Source: https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725 
+### Data Source: 
+https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725 
 
 ### Timeframe
 2017 - 2020
