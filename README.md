@@ -14,7 +14,7 @@ My goal for this project is to conduct Data Cleaning and Exploratory Data Analys
 
 The objective is to create an abstract that investigates the most common chronic diseases in the US, pointing at correlations between indicators and locality Hospital spendings, gender, etnicity. In a second step, the focus will be mantained about alcohol comsumption, comparing it to other diseases, advocating abuse prevention. For this purposes, a descriptive model is applied, upcoming insights are expressed in visualizations and dashboards enchancing the meanings of the findings and providing a straightfoward understanging of correlations, patterns and trends.
 ### Goal:
-* #### Created a regression model for  Display the top 10 US chronic diseases on a bar plot (count of top 10 topics U.S Chronic Deseases);
+* #### Created a model for  Display the top 10 US chronic diseases on a horizontal bars (count of top 10 topics U.S Chronic Deseases);
 * #### To evaluate the increase in chances of Chronic Kidney Disease;
 * #### The role of gender and ethnicity differences in diabetes health ouctomes.
 * #### What states have the highest percentage of chronic disease caused by Alchohol?
