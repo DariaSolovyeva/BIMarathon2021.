@@ -3,6 +3,7 @@ drop table temp_table;
 create database chronic_disease_inddb;
 use chronic_disease_inddb;
 
+
 create table temp_table
 ( 	YearStart varchar(50),
 	YearEnd varchar(50),
