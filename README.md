@@ -73,6 +73,7 @@ CDI increased to 124 indicators in the following 18 topic groups: alcohol; arthr
 ## Physical Model:
 ![Physical Data Model_  Chronic Disease Indicators ](https://user-images.githubusercontent.com/36121575/137229844-30a5bf41-6b69-44a5-b4b4-cf39a2e23f3b.jpeg)
 
-
+## Physical Model from MySQLWorkbench:
+<img width="583" alt="Screen Shot 2021-11-04 at 8 37 39 PM" src="https://user-images.githubusercontent.com/36121575/140454448-c654f265-afcb-4fc3-a9a4-73dd3f7fdccf.png">
 
 ## Conclusions and Relevance:
