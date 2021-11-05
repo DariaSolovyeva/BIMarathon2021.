@@ -21,11 +21,11 @@ The objective is to create an abstract that investigates the most common chronic
 
 I imported the CSV data file into  MySQL workbench. Then I used various approaches to better understand the data within each column since there was very limited contextual information. The group of stratification 2 and 3 columns were not useful and these were removed. 
 
-#### Let’s understand what each column is about. While some of the column names are relatively self-explanatory, I used ...... to better understand the unique categorical data. Here are some examples:
+#### Let’s understand what each column is about. While some of the column names are relatively self-explanatory, I used  to better understand the unique categorical data. Here are some examples:
 * YearStart: Identifies the year when reporting started.
 * Topic: Identifies the Chronic Disease topic, 13k+ rows of data are grouped into the following 17 categories. There is a corresponding column called TopicID that simply gives an abbreviated label.
 * Question: Within each topic, there are a number of questions. There is a corresponding column QuestionID that we’ll use. These are the 202 unique indicators that the dataset has values, and we’ll analyze this further.
-* DataSource: Given that we’ve so many indicators, I’m not surprised that there are 24 data sources. However, the following histogram shows that the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and YRBSS, which is the Youth Risk Behavior Surveillance System (YRBSS) monitors six categories of health-related behaviors that contribute to the leading causes of death and disability among youth and adults.
+* DataSource: Given that we’ve so many indicators, I’m not surprised that there are 24 data sources. However, the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and YRBSS, which is the Youth Risk Behavior Surveillance System (YRBSS) monitors six categories of health-related behaviors that contribute to the leading causes of death and disability among youth and adults.
 * DataValueUnit: Values in DataValue consist of the following units, including percentages, dollar-amounts, years, and cases per thousands.
 * DataValue: Identifies the actial value of the data. The responses that are in other form than number are
 * DataValueAlt: Identifies the alternate data value. The responses that are in another form than numbers have been eliminated and replaced with blank values here.
