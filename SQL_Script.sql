@@ -1,8 +1,8 @@
 select version();
 drop table temp_table;
+-- Creating database, dims and facts; upload from temp table (csv file)
 create database chronic_disease_inddb;
 use chronic_disease_inddb;
-
 
 create table temp_table
 ( 	YearStart varchar(50),
@@ -28,16 +28,15 @@ create table temp_table
 	StratificationCategoryID1 varchar(50)
     );
     
-    select* from temp_table;
-    drop table temp_table;
-    truncate temp_table;
+    select * from temp_table;
+    truncate temp_table; -- delete only data
   
 create table dim_location(
-	     location_pkid int not null auto_increment,
-             location_id int,
-	     locationDesc varchar(255),
-	     geolocation varchar(255),
-             primary key(location_pkid)
+	location_pkid int not null auto_increment,
+        location_id int,
+	locationDesc varchar(255),
+	geolocation varchar(255),
+        primary key (location_pkid)
 );
 -- uploading data from temp_table to location table
 insert ignore into dim_location(location_id, locationDesc, geolocation)
@@ -66,7 +65,7 @@ create table dim_stratification_category(
         StratificationCategoryID1 varchar(50), 
 	StratificationCategory1 varchar(50),
 	Stratification1 varchar(255),
-    primary key(StratificationCategory_pkid)
+    primary key (StratificationCategory_pkid)
     );
     
 -- uploading data from temp_table to stratification_category table
@@ -101,10 +100,10 @@ select distinct QuestionID, Question from temp_table;
 INSERT INTO dim_topic (TopicID, Topic, DataSource, DatavalueFootnote, QuestionID)
 SELECT DISTINCT
 	  tmp.TopicID
-        , tmp.Topic
-        , tmp.DataSource
-        , tmp.DatavalueFootnote
-        , q.Question_pkid
+    , tmp.Topic
+    , tmp.DataSource
+    , tmp.DatavalueFootnote
+    , q.Question_pkid
 FROM temp_table tmp
 JOIN dim_question q ON q.QuestionID = tmp.QuestionID
 ;
@@ -130,13 +129,13 @@ group by DataSource;
         foreign key (DataValueType_id) references dim_datavalue (DataValueType_pkid) on delete set null,
         foreign key (Location_id) references dim_location (location_pkid) on delete set null,
         foreign key (Topic_id) references dim_topic (Topic_pkid) on delete set null,
-        foreign key (StratificationCategory_id) references dim_stratification_category (StratificationCategory_pkid) on delete set null
+         foreign key (StratificationCategory_id) references dim_stratification_category (StratificationCategory_pkid) on delete set null
     );
     
 INSERT INTO fact_table (YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit, HighConfidenceLimit, Location_id,
 							 Topic_id, DataValueType_id, StratificationCategory_id)
 select distinct
-	t.YearStart,
+    t.YearStart,
     t.YearEnd,
     t.DataValue,
     t.DataValueAlt,
@@ -152,77 +151,68 @@ join dim_topic tp on tp.TopicID = t.TopicID
 join dim_datavalue d on d.DataValueTypeID = t.DataValueTypeID
 join dim_stratification_category s on s.StratificationCategoryID1 = t.StratificationCategoryID1;
 
-commit;
-select * from fact_table
- -- where LowConfidenceLimit is null
-limit 100000;
-
-select topic, avg(DataValue)
-from fact_table t
-join dim_stratification_category s on t.StratificationCategory_id = s.StratificationCategory_pkid
-join dim_topic tp on t.Topic_id = tp.Topic_pkid
-where Stratification1 = 'Male'
-group by topic;
-
-select topic, avg(DataValue)
-from fact_table t
-join dim_stratification_category s on t.StratificationCategory_id = s.StratificationCategory_pkid
-join dim_topic tp on t.Topic_id = tp.Topic_pkid
-where Stratification1 = 'Female'
-group by topic;
-
--- Add Duplicate row in fact_table
+-- creating duplicates in fact_table
 insert into fact_table
-           values(2382686, '2017', '2017','11','11', '10.7', '11.3', 1, 1, 2,1);
+     values(2382686, '2017', '2017','11','11', '10.7', '11.3', 1, 1, 2,1);
 
--- method 1: Finding duplicates in table: fact_table using Group BY and HAVING 
+-- Finding duplicates in table: method 1 - HAVING
 select YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit, HighConfidenceLimit, Location_id,
-       Topic_id, DataValueType_id, StratificationCategory_id , count(*) as Duplicates
+	   Topic_id, DataValueType_id, StratificationCategory_id , count(*) as Duplicates
 from fact_table
 group by 1,2,3,4,5,6,7,8,9,10
 having count(*)>1;
 
--- method 2: Finding duplicates in table: fact_table using Common Table Expression (CTE)
+-- Finding duplicates in table: method 1 - Common Table Expression (CTE)
 WITH CTE as
 (
-select*, ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
+select *
+	,ROW_NUMBER() OVER (
+		partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
 					 HighConfidenceLimit, Location_id, Topic_id, DataValueType_id, 
-                                         StratificationCategory_id order by DataValue) Duplicates
+					 StratificationCategory_id order by DataValue) Duplicates
 from fact_table
 ) 
 select * from CTE
-where Duplicates >1;
+where Duplicates > 1;
 
 -- Method 3. Finding duplicates in table: fact_table using ROW_NUMBER () function
-select * from (select*, ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit, 
+select * 
+from (
+		select *
+        ,ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit, 
                                                         HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
                                                         StratificationCategory_id order by DataValue) as Duplicates
 from fact_table) as temp_table
 where Duplicates>1;
 
--- Deleting duplicates from table: fact_table using the ROW_NUMBER () function
-delete from fact_table where Fact_id in (
-select Fact_id from (select Fact_id, ROW_NUMBER()
-OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
-		   HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
-                   StratificationCategory_id order by DataValue) as Duplicates
+-- Removing duplicates from table: fact_table using the ROW_NUMBER () function
+delete from fact_table
+where Fact_id in (
+		    select Fact_id 
+                    from (select Fact_id
+				 ,ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
+				 HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
+                                 StratificationCategory_id order by DataValue) as Duplicates
 from fact_table) as temp_table 
 where Duplicates>1
 );
 
--- Double checking for duplicates after running the delete script using Common Table Expression
+-- Double check for duplicates after removing
 WITH CTE as 
 (
-select*, ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
-		                         HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
-                                         StratificationCategory_id order by DataValue) as Duplicates
+select *
+	, ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
+				          HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
+                                          StratificationCategory_id order by DataValue) as Duplicates
 from fact_table
 )
 select * from CTE
 where Duplicates >1;
 
 -- Double checking for duplicates after running the delete script using ROW_NUMBER() function
-select * from (select*, ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
+select * 
+from (select *,
+			ROW_NUMBER() OVER (partition by YearStart, YearEnd, DataValue, DataValueAlt, LowConfidenceLimit,
 				                        HighConfidenceLimit, Location_id, Topic_id, DataValueType_id,
                                                         StratificationCategory_id order by DataValue) as Duplicates
 from fact_table) as temp_table
@@ -233,9 +223,9 @@ from fact_table;
 
 -- Using CASE WHEN to find the Impact on Gestation (Risk of termination of pregnancy from the influence of various factors
 select  distinct DataValue, q.Question, s.Stratification1 ,case
-             when Question ='Alcohol use before pregnancy' then ' Risk'
-             when Question = 'Cigarette smoking before pregnancy' then 'Risk'
-             when Question = 'Preventive dental care before pregnancy' then 'Risk'
+             when Question IN ('Alcohol use before pregnancy',
+	                       'Cigarette smoking before pregnancy'
+                               'Preventive dental care before pregnancy') then ' Risk'
 	     when Question = 'Folic acid supplementation' then 'Prevents risk'
              else 'Normal'
              end as ImpactOnGestation
@@ -249,16 +239,25 @@ where s.Stratification1 = 'Female';
 select distinct Question from dim_question;
 
 -- Update columns in fact table and SET NULL VALUE
-update fact_table set HighConfidenceLimit = NULL where Fact_id = 22;
-update fact_table set HighConfidenceLimit = NULL where Fact_id = 23;
-update fact_table set HighConfidenceLimit = NULL where Fact_id = 24;
+update fact_table 
+set HighConfidenceLimit = NULL 
+where Fact_id = 22;
 
--- Mapping NULL value with the 'No value' in table: fact_table with a COALESCE function
-select*, coalesce(LowConfidenceLimit, 'No value') as LowConfidenceLimit
+update fact_table 
+set HighConfidenceLimit = NULL 
+where Fact_id = 23;
+update fact_table
+set HighConfidenceLimit = NULL 
+where Fact_id = 24;
+
+-- Mapping NULL value with the 'No value' - COALESCE function
+select *
+,coalesce(LowConfidenceLimit, 'No value') as LowConfidenceLimit
 from fact_table;
 
 -- Mapping NULLIF function to map the 'No data available' column DatavalueFootnote in table 
-select*, nullif(DatavalueFootnote, 'No data available') as NullLowConfident
+select *
+, nullif(DatavalueFootnote, 'No data available') as NullLowConfident
 from fact_table t
 join dim_topic d on t.Topic_id = d.Topic_pkid
 order by NullLowConfident;
@@ -268,60 +267,30 @@ select*,
 greatest(0.20, LowConfidenceLimit) as LowConfidenceLimit
 from fact_table;
 
+use chronic_disease_inddb
 /* Using Common Table Expression to find plot to comparison of Diabetes among women aged 18-44 years for 
-different states having sun (DataValue) <5000 */
-/*with CTE_1 as (
-select distinct Location_id from dim_location
-where locationDesc in ('Californias', 'Washington')  'Prevalence of diagnosed diabetes among adults aged >= 18 years')
-),*/
-
-with CTE_1 as (
-select distinct QuestionID  from dim_question 
-where Question = 'Diabetes prevalence among women aged 18-44 years'
-),
-
-CTE_2 as (
-select distinct Location_id from dim_location
-where locationDesc in ('California', 'Washington') 
-),
-
-CTE_3 as (
-select location_id, 
-	sum(DataValue) as sumDataValue
-from fact_table
-group by location_id
-having sum(DataValue)>50000
-)
-
-select q.QuestionID ,
-	   t.DataValue,
+different states having sum (DataValue) <5000 */
+;
+select
        l.location_id,
-       date_format(str_to_date(YearStart, '%m/%d/%y'), '%m/%d/%y') as 'Date'
+       date_format(str_to_date(YearStart, '%m/%d/%y'), '%m/%d/%y') as 'Date',
+       sum(t.DataValue)
 from fact_table t
 join dim_location l on t.Location_id = l.location_pkid
 join dim_topic tp on t.Topic_id = tp.Topic_pkid
 join dim_question q on tp.Topic_pkid = q.Question_pkid
-where q.QuestionID in (select distinct q.QuestionID from CTE_1)
-and t.DataValue > (select sumDataValue from CTE_3)
-and l.Location_id in (select distinct Location_id from CTE_2)
-and date_format(str_to_date(YearStart, '%y'), '%y') between '19' and '20'
+where q.Question = 'Diabetes prevalence among women aged 18-44 years'
+and l.locationDesc in ('California', 'Washington') 
+group by YearStart, l.location_id
+having sum(DataValue)>50000
 order by DataValue;
 
-/* select question, round(sum(DataValue)) as sumDataValue
-from fact_table t
-join dim_topic tp on t.Topic_id = tp.Topic_pkid
-join dim_question q on tp.Topic_pkid = q.Question_pkid
-join dim_location l on t.Location_id = l.location_pkid
--- where Topic = 'Diabetes'
-where question = 'Diabetes prevalence among women aged 18-44 years'
-and locationDesc = 'California'
-group by Topic; */
-
 -- Window function 
-select DataValueAlt, Topic, 
-row_number() over ( order by DataValueAlt desc) row_n,
-rank() over ( order by DataValueAlt desc) rank_f,
-dense_rank() over (order by DataValueAlt desc) dense_f
+select DataValueAlt,
+	   Topic, 
+	   row_number() over ( order by DataValueAlt desc) row_n,
+	   rank() over ( order by DataValueAlt desc) rank_f,
+	   dense_rank() over (order by DataValueAlt desc) dense_f
 from fact_table t
 join dim_topic tp on t.Topic_id = tp.Topic_pkid;
 
@@ -329,6 +298,14 @@ join dim_topic tp on t.Topic_id = tp.Topic_pkid;
 select Fact_id, DataValueAlt, sum(DataValueAlt) over (order by Fact_id) as c
 from fact_table t
 join dim_topic tp on t.Topic_id = tp.Topic_pkid;
+       
+
+
+       
+
+
+
+
 
 
        
