@@ -70,8 +70,8 @@ The objective is to create an abstract that investigates the most common chronic
 - FK_DataValueTypeID
 
 ## Logical Model: 
-[ Logical Data Model - Chronic Disease Indicators .pdf](https://github.com/DariaSolovyeva/BIMarathon2021./files/7480293/Logical.Data.Model.-.Chronic.Disease.Indicators.pdf)
 
+<img width="1156" alt="Screen Shot 2021-11-04 at 8 27 05 PM" src="https://user-images.githubusercontent.com/36121575/140453585-b30bffa4-d0f8-4f8c-9727-56fa68a69c40.png">
 
 ## Conclusions and Relevance:
 
