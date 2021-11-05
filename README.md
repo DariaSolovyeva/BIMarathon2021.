@@ -7,17 +7,26 @@ Recently, I’ve taken on a personal project to apply the SQL and data analyses 
 ##  Question 1: What are the most common indicators of chronic disease in Pennsylvania?
 ## What states have the highest percentage of chronic disease caused by Alchohol?
 
+My goal for this project is to conduct Data Cleaning and Exploratory Data Analysis for the Chronic Disease Indicators (CDI).
 I imported the CSV data file into  MySQL workbench. Then I used various approaches to better understand the data within each column since there was very limited contextual information. The group of stratification 2 and 3 columns were not useful and these were removed. 
 
-Let’s understand what each column is about. While some of the column names are relatively self-explanatory, I used ...... to better understand the unique categorical data. Here are some examples:
-
-* Topic: 13k+ rows of data are grouped into the following 17 categories. There is a corresponding column called TopicID that simply gives an abbreviated label.
-
+#### Let’s understand what each column is about. While some of the column names are relatively self-explanatory, I used ...... to better understand the unique categorical data. Here are some examples:
+* YearStart: Identifies the year when reporting started.
+* Topic: Identifies the Chronic Disease topic, 13k+ rows of data are grouped into the following 17 categories. There is a corresponding column called TopicID that simply gives an abbreviated label.
 * Question: Within each topic, there are a number of questions. There is a corresponding column QuestionID that we’ll use. These are the 202 unique indicators that the dataset has values, and we’ll analyze this further.
-
 * DataSource: Given that we’ve so many indicators, I’m not surprised that there are 24 data sources. However, the following histogram shows that the majority of the data comes from two sources, BRFSS, which is CDC’s Behavioral Risk Factor Surveillance System, and YRBSS, which is the Youth Risk Behavior Surveillance System (YRBSS) monitors six categories of health-related behaviors that contribute to the leading causes of death and disability among youth and adults.
-
 * DataValueUnit: Values in DataValue consist of the following units, including percentages, dollar-amounts, years, and cases per thousands.
+* DataValue: Identifies the actial value of the data. The responses that are in other form than number are
+* DataValueAlt: Identifies the alternate data value. The responses that are in another form than numbers have been eliminated and replaced with blank values here.
+* LowConfidenceLimit: Lower Confidence Interval. 
+* HighConfidenceLimit: Higher Confidence Interval.
+* StratificationCategory1: Identifies the sampling category of the population.
+* LocationID: Location identity.
+* TopicID: Short form of Chronic Disease Category.
+* QuestionID: Short form of Chronic Disease Indicator.
+* Data_ValueTypeID: Represents the short form of the data value type
+* StratificationCategoryID1: Identifies the sampling category in short form.
+* StratificationID1: Identifies the sampling sub category in short form.
 
 
 The Chronic Disease Indicators system is an electronic repository of current and historical data and provides data on over 200 indicators. Using the system will result in enhanced chronic disease surveillance, better-informed policymaking, and facilitation of chronic disease program evaluation by state/territory and large health departments.
@@ -58,7 +67,6 @@ The objective is to create an abstract that investigates the most common chronic
 - FK_TopicID
 - FK_StratificationCategoryID1
 - FK_locationID
-- FK_QuestionID
 - FK_DataValueTypeID
 
 ## Logical Model
